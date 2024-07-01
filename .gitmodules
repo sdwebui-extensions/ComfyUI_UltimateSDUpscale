@@ -1,3 +1,3 @@
 [submodule "repositories/ultimate_sd_upscale"]
 	path = repositories/ultimate_sd_upscale
-	url = https://github.com/Coyote-A/ultimate-upscale-for-automatic1111
+	url = https://gitee.com/liuan201128/ultimate-upscale-for-automatic1111.git
