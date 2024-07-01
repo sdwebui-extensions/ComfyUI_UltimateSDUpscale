@@ -14,14 +14,14 @@ original_modules = sys.modules.copy()
 
 # Place aside potentially conflicting modules
 modules_used = [
-    "modules",
-    "modules.devices",
-    "modules.images",
-    "modules.processing",
-    "modules.scripts",
-    "modules.shared",
-    "modules.upscaler",
-    "utils",
+    "UltimateSDUpsacle_modules",
+    "UltimateSDUpsacle_modules.devices",
+    "UltimateSDUpsacle_modules.images",
+    "UltimateSDUpsacle_modules.processing",
+    "UltimateSDUpsacle_modules.scripts",
+    "UltimateSDUpsacle_modules.shared",
+    "UltimateSDUpsacle_modules.upscaler",
+    "UltimateSDUpsacle_utils",
 ]
 original_imported_modules = {}
 for module in modules_used:

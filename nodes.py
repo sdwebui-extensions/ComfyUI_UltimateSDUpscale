@@ -4,10 +4,10 @@ import logging
 import torch
 import comfy
 from usdu_patch import usdu
-from utils import tensor_to_pil, pil_to_tensor
-from modules.processing import StableDiffusionProcessing
-import modules.shared as shared
-from modules.upscaler import UpscalerData
+from ComfyUI_UltimateSDUpscale.UltimateSDUpsacle_utils import tensor_to_pil, pil_to_tensor
+from UltimateSDUpsacle_modules.processing import StableDiffusionProcessing
+import UltimateSDUpsacle_modules.shared as shared
+from UltimateSDUpsacle_modules.upscaler import UpscalerData
 
 MAX_RESOLUTION = 8192
 # The modes available for Ultimate SD Upscale

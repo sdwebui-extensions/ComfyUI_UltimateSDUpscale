@@ -3,8 +3,8 @@ import torch
 import math
 from nodes import common_ksampler, VAEEncode, VAEDecode, VAEDecodeTiled
 from comfy_extras.nodes_custom_sampler import SamplerCustom
-from utils import pil_to_tensor, tensor_to_pil, get_crop_region, expand_crop, crop_cond
-from modules import shared
+from ComfyUI_UltimateSDUpscale.UltimateSDUpsacle_utils import pil_to_tensor, tensor_to_pil, get_crop_region, expand_crop, crop_cond
+from UltimateSDUpsacle_modules import shared
 
 if (not hasattr(Image, 'Resampling')):  # For older versions of Pillow
     Image.Resampling = Image
