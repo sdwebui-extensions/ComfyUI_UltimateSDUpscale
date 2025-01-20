@@ -3,7 +3,7 @@ import torch
 import math
 from nodes import common_ksampler, VAEEncode, VAEDecode, VAEDecodeTiled
 from comfy_extras.nodes_custom_sampler import SamplerCustom
-from ComfyUI_UltimateSDUpscale.UltimateSDUpsacle_utils import pil_to_tensor, tensor_to_pil, get_crop_region, expand_crop, crop_cond
+from UltimateSDUpsacle_utils import pil_to_tensor, tensor_to_pil, get_crop_region, expand_crop, crop_cond
 from UltimateSDUpsacle_modules import shared
 from tqdm import tqdm
 import comfy
