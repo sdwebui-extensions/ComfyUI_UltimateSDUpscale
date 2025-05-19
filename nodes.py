@@ -4,7 +4,7 @@ import logging
 import torch
 import comfy
 from usdu_patch import usdu
-from ComfyUI_UltimateSDUpscale.UltimateSDUpsacle_utils import tensor_to_pil, pil_to_tensor
+from UltimateSDUpsacle_utils import tensor_to_pil, pil_to_tensor
 from UltimateSDUpsacle_modules.processing import StableDiffusionProcessing
 import UltimateSDUpsacle_modules.shared as shared
 from UltimateSDUpsacle_modules.upscaler import UpscalerData
