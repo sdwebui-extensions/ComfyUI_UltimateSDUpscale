@@ -3,8 +3,8 @@ import torch
 import math
 from nodes import common_ksampler, VAEEncode, VAEDecode, VAEDecodeTiled
 from comfy_extras.nodes_custom_sampler import SamplerCustom
-from UltimateSDUpsacle_utils import pil_to_tensor, tensor_to_pil, get_crop_region, expand_crop, crop_cond
 from UltimateSDUpsacle_modules import shared
+from usdu_utils import pil_to_tensor, tensor_to_pil, get_crop_region, expand_crop, crop_cond
 from tqdm import tqdm
 import comfy
 from enum import Enum
@@ -58,8 +58,8 @@ class StableDiffusionProcessing:
         self.inpaint_full_res_padding = 0
         self.width = init_img.width * upscale_by
         self.height = init_img.height * upscale_by
-        self.rows = math.ceil(self.height / tile_height)
-        self.cols = math.ceil(self.width / tile_width)
+        self.rows = round(self.height / tile_height)
+        self.cols = round(self.width / tile_width)
 
         # ComfyUI Sampler inputs
         self.model = model
@@ -144,8 +144,7 @@ def sample(model, seed, steps, cfg, sampler_name, scheduler, positive, negative,
 
     # Custom sampler and sigmas
     if custom_sampler is not None and custom_sigmas is not None:
-        custom_sample = SamplerCustom()
-        (samples, _) = getattr(custom_sample, custom_sample.FUNCTION)(
+        kwargs = dict(
             model=model,
             add_noise=True,
             noise_seed=seed,
@@ -156,6 +155,11 @@ def sample(model, seed, steps, cfg, sampler_name, scheduler, positive, negative,
             sigmas=custom_sigmas,
             latent_image=latent
         )
+        if "execute" in dir(SamplerCustom):
+            (samples, _) = SamplerCustom.execute(**kwargs)
+        else:
+            custom_sample = SamplerCustom()
+            (samples, _) = getattr(custom_sample, custom_sample.FUNCTION)(**kwargs)
         return samples
 
     # Default

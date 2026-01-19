@@ -1,5 +1,5 @@
 from PIL import Image
-from UltimateSDUpsacle_utils import tensor_to_pil, pil_to_tensor
+from usdu_utils import tensor_to_pil, pil_to_tensor
 from comfy_extras.nodes_upscale_model import ImageUpscaleWithModel
 from UltimateSDUpsacle_modules import shared
 
@@ -14,7 +14,11 @@ class Upscaler:
             return img
         if (shared.actual_upscaler is None):
             return img.resize((img.width * scale, img.height * scale), Image.Resampling.LANCZOS)
-        (upscaled,) = ImageUpscaleWithModel().upscale(shared.actual_upscaler, shared.batch_as_tensor)
+        if "execute" in dir(ImageUpscaleWithModel):  
+            # V3 schema: https://github.com/comfyanonymous/ComfyUI/pull/10149
+            (upscaled,) = ImageUpscaleWithModel.execute(shared.actual_upscaler, shared.batch_as_tensor)
+        else:
+            (upscaled,) = ImageUpscaleWithModel().upscale(shared.actual_upscaler, shared.batch_as_tensor)
         shared.batch = [tensor_to_pil(upscaled, i) for i in range(len(upscaled))]
         return shared.batch[0]
 
