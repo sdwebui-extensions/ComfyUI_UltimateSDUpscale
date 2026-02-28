@@ -1,5 +1,8 @@
+import logging
 import sys
 import os
+
+logger = logging.getLogger(__name__)
 
 # Check for original USDU script
 current_dir = os.path.dirname(os.path.realpath(__file__))
@@ -56,7 +59,7 @@ original_modules = sys.modules.copy()
 #         original_imported_modules[module] = sys.modules.pop(module)
 
 # Proceed with node setup
-from .nodes import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
+from .usdu_nodes import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
 
 WEB_DIRECTORY = "./js"
 __all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]
