@@ -1,4 +1,5 @@
 # Make some patches to the script
+from __future__ import annotations
 from repositories import ultimate_upscale as usdu
 import UltimateSDUpsacle_modules.shared as shared
 """
@@ -11,8 +12,6 @@ Preserves original behavior but:
 - Uses functools.wraps when monkey-patching methods
 - Adds type hints and docstrings for clarity
 """
-
-from __future__ import annotations
 from functools import wraps
 import logging
 import math
@@ -26,8 +25,6 @@ from comfy_extras.nodes_custom_sampler import SamplerCustom
 from crop_model_patch import crop_model_cond
 from nodes import common_ksampler, VAEEncode, VAEDecode, VAEDecodeTiled
 
-import modules.shared as shared
-from repositories import ultimate_upscale as usdu
 import usdu_utils
 
 logger = logging.getLogger(__name__)
